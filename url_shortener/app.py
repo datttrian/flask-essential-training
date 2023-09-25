@@ -47,7 +47,7 @@ def your_url():
         return redirect(url_for('home'))
 
 
-@app.route("/<string:code>")
+@app.route("/<string:code>")  # type: ignore
 def redirect_to_url(code: str):
     if os.path.exists('urls.json'):
         with open('urls.json') as urls_file:
