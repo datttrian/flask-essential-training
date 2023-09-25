@@ -74,5 +74,5 @@ def redirect_to_url(code: str):
 
 
 @app.errorhandler(404)
-def page_not_found(error):
+def page_not_found(error: Exception):
     return render_template('page_not_found.html'), 404
