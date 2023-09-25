@@ -35,7 +35,7 @@ def your_url():
                 full_name = request.form['code'] + secure_filename(f.filename)
 
                 f.save(  # type: ignore
-                    '/workspaces/flask-essential-training/url_shortener'
+                    '/workspaces/flask-essential-training/url_shortener/static/user_files/'
                     + full_name
                 )
                 urls[request.form['code']] = {'file': full_name}
@@ -55,3 +55,10 @@ def redirect_to_url(code: str):
             if code in urls.keys():
                 if 'url' in urls[code].keys():
                     return redirect(urls[code]['url'])
+                else:
+                    return redirect(
+                        url_for(
+                            'static',
+                            filename='user_files/' + urls[code]['file'],
+                        )
+                    )
