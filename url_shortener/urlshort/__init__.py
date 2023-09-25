@@ -1,7 +1,7 @@
 from flask import Flask
 
 
-def create_app(test_config=None):
+def create_app(test_config=None):  # type: ignore
     app = Flask(__name__)
     app.secret_key = 'somerandomstring'
 
