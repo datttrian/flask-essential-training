@@ -83,4 +83,4 @@ def page_not_found(error: Exception):
 
 @app.route('/api')
 def session_api():
-    return jsonify(list(session.keys()))
+    return jsonify(list(session.keys()))  # type: ignore
