@@ -7,6 +7,7 @@ from flask import (
     flash,
     abort,
     session,
+    jsonify,
 )
 import json
 import os.path
@@ -78,3 +79,8 @@ def redirect_to_url(code: str):
 @app.errorhandler(404)
 def page_not_found(error: Exception):
     return render_template('page_not_found.html'), 404
+
+
+@app.route('/api')
+def session_api():
+    return jsonify(list(session.keys()))
