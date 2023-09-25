@@ -1,3 +1,9 @@
-<h1>Your URL</h1>
+{% extends 'base.html' %}
 
-<h2>{{ code }}</h2>
+{% block title %}URL for "{{ code }}"{% endblock %}
+
+{% block main %}
+  <h1>Your URL</h1>
+
+  <h2>{{ code }}</h2>
+{% endblock %}
