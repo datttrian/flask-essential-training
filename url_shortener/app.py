@@ -31,12 +31,14 @@ def your_url():
             urls[request.form['code']] = {'url': request.form['url']}
         else:
             f = request.files['file']
-            full_name = request.form['code'] + secure_filename(f.filename)
-            f.save(
-                '/workspaces/flask-essential-training/url_shortener'
-                + full_name
-            )
-            urls[request.form['code']] = {'file': full_name}
+            if f.filename is not None:
+                full_name = request.form['code'] + secure_filename(f.filename)
+
+                f.save(  # type: ignore
+                    '/workspaces/flask-essential-training/url_shortener'
+                    + full_name
+                )
+                urls[request.form['code']] = {'file': full_name}
 
         with open('urls.json', 'w') as url_file:
             json.dump(urls, url_file)
